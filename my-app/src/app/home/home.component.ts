@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {boldDirective} from '../directives/bold.directive';
 
 @Component({
   selector: 'app-home',
@@ -6,8 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
+  navItems: Array<string> = ['Home', 'Shop', 'ContactUs'];
+  size: string ="24px";
   constructor() { }
+
+  onclick(e: Event){
+    this.size = "48px";
+  }
 
   ngOnInit() {
   }

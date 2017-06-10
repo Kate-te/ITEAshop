@@ -1,3 +1,13 @@
-<p>
-  home works!
-</p>
+<nav>
+  <li *ngFor ="let item of navItems">
+    <span [class.boldText]="item === 'Home'"
+          [style.fontSize]="size"
+          (click)="onclick($event)">{{item}}</span>
+  </li>
+</nav>
+<nav>
+  <li *ngFor ="let item of navItems">
+    <span [bold]>{{item}}</span>
+  </li>
+</nav>
+<input type="text" [(ngModel)]="size">
