@@ -1,13 +1,20 @@
-<nav>
-  <li *ngFor ="let item of navItems">
-    <span [class.boldText]="item === 'Home'"
-          [style.fontSize]="size"
-          (click)="onclick($event)">{{item}}</span>
-  </li>
-</nav>
-<nav>
+<!--<nav>
   <li *ngFor ="let item of navItems">
     <span [bold]>{{item}}</span>
   </li>
 </nav>
-<input type="text" [(ngModel)]="size">
+<input type="text" [(ngModel)]="size">-->
+
+<div *ngFor ="let user of users">
+  <p [bold] *while = "user.id < 3">
+    {{user.name}}
+  </p>
+</div> 
+<div> factorial {{x}} is {{x| factorial}}
+  </div>
+  <div> From friends {{friends}} here are {{friends| join:1:3}}
+    </div>
+
+<div *ngFor="let user of users">
+    {{user.firstName}} | {{user.lastName}} 
+  </div>
