@@ -1,7 +1,14 @@
 <!--The whole content below can be removed with the new code.-->
+<nav>
+  <i class="fa fa-diamond" aria-hidden="true"></i>
+
+  <li *ngFor="let item of navItems">
+    <a [routerLink]="item.link"
+      routerLinkActive="active-link">{{item.name}}</a>
+  </li>
+</nav>
+
   <h1>
     Welcome to {{title}}!!
   </h1>
-  <app-home></app-home>
-
-
+  <router-outlet></router-outlet>

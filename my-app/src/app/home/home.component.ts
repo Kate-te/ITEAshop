@@ -1,30 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import {boldDirective} from '../directives/bold.directive';
 import { userService } from '../services/user.service';
 import { User } from '../models/user'
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
-  navItems: Array<string> = ['Home', 'Shop', 'ContactUs'];
+export class HomeComponent{
   users: User[];
-  x: number = 5;
-  friends: Array<any> = ["Kate", "Alex", "Dimas", "Yaruk", "Vanya"];
-  size: string ="24px";
 
   constructor(
     private userService: userService
-  ) { }
-
-  onclick(e: Event){
-    this.size = "48px";
+  ) {this.users = this.userService.getUsers();
   }
 
-  ngOnInit() {
-    this.users = this.userService.getUsers();
+  onSubmit(e: Event, form: NgForm) {
+    e.preventDefault();
+    this.userService.addUser(form.controls["firstName"].value, form.controls["lastName"].value, form.controls["email"].value, form.controls["age"].value);
   }
 
 }

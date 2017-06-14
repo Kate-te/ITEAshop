@@ -2,3 +2,8 @@
     font-weight: 700;
 }
 
+*{
+    list-style: none;
+    letter-spacing: 1px;
+    font-size: 18px;
+}

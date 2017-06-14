@@ -8,6 +8,10 @@ import { HomeComponent } from './home/home.component';
 import { FactorialPipe } from './pipes/factorial.pipe';
 import { JoinPipe } from './pipes/join.pipe';
 import { userService} from './services/user.service';
+import { CatalogComponent } from './catalog/catalog.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { RoutingModule} from './routing.module';
 
 @NgModule({
   declarations: [
@@ -16,10 +20,14 @@ import { userService} from './services/user.service';
     boldDirective,
     whileDirective,
     FactorialPipe,
-    JoinPipe
+    JoinPipe,
+    CatalogComponent,
+    ContactUsComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
+    RoutingModule,
     FormsModule
   ],
   providers: [userService],
