@@ -1,25 +1,60 @@
-<form #userForm="ngForm" novalidate (ngSubmit)="onSubmit($event, userForm)">
-  <div>
+<ul>
+     <li>Our users:</li>
+    <ng-template ngFor let-user [ngForOf]="users">
+      <li (click)="onSelect(user)">
+        {{user.firstName}} | {{user.lastName}}
+      </li>
+    </ng-template>
+</ul>
+
+<form [formGroup]= "userForm" novalidate (ngSubmit)="onSubmit($event, userForm)">
+  <div class="form_row">
     <label for ="firstName">First Name:</label>
-    <input id="firstName" name="firstName" type="text" ngModel required>
+    <div class="form_input">
+      <input id="firstName"  
+        (change)="clearControlValidation('firstName')"
+        (focus)="clearControlValidation('firstName')"
+        formControlName="firstName" type="text" required>
+      <div clas="massage massage_error" *ngIf="isFormSubmitted && userForm.controls['firstName'].invalid && userForm.controls['firstName'].untouched">
+        First Name is required!
+      </div>
+    </div>
   </div>
 
-  <div>
+  <div class="form_row">
     <label for ="lastName">Last Name:</label>
-    <input id="lastName" name="lastName" type="text" ngModel required>
+    <div class="form_input">
+      <input id="lastName" 
+        (change)="clearControlValidation('lastName')"
+        (focus)="clearControlValidation('lastName')"
+        formControlName="lastName" type="text" required>
+      <div clas="massage massage_error" *ngIf="isFormSubmitted && userForm.controls['lastName'].invalid && userForm.controls['lastName'].untouched">
+        Last Name is required!
+      </div>      
+      </div>
   </div>
 
-  <div>
+  <div class="form_row">
     <label for ="email">Email:</label>
-    <input id="email" name="email" type="text" ngModel required>
+    <div  class="form_input">
+      <input id="email" 
+        (change)="clearControlValidation('email')"
+        (focus)="clearControlValidation('email')"
+        formControlName="email" type="email" required>
+      <div clas="massage massage_error" *ngIf="isFormSubmitted && userForm.controls['email'].invalid && userForm.controls['email'].untouched">
+        <span *ngIf ="userForm.controls['email'].hasError('required')">Email is required!</span>
+        <span *ngIf ="userForm.controls['email'].hasError('pattern')">Email is invalid!</span>
+      </div>
   </div>
 
-  <div>
+  <div class="form_row">
     <label for ="age">Age:</label>
-    <input id="age" name="age" type="text" ngModel required>
+    <div  class="form_input">
+      <input id="age" formControlName="age" type="text">
+      </div>
   </div>
 
-  <div>
-    <input value="submit" type="submit" [disabled]="userForm.invalid">
+  <div  class="form_row">
+    <input value="submit" type="submit">
   </div>
   
